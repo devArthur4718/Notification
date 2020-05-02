@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Notification</string>
+    <string name="channel_description">A message channel</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notificaton_content">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="services_notification">Services notification</string>
+    <string name="title_not_1">Android Core</string>
+    <string name="services_example">Services Example</string>
+    <string name="services_text">A service is a general-purpose entry point for keeping an app running in the background for all kinds of reasons. It is a component that runs in the background to perform long-running operations or to perform work for remote processes.</string>
+    <string name="samples">Samples</string>
+    <string name="background_service">Background service</string>
+    <string name="foreground_service">Foreground Service</string>
+    <string name="show_notification">Show notification</string>
+    <string name="notifications">Notifications</string>
+    <string name="show_toast">Show Toast</string>
+    <string name="show_notification_tap">Show notification tap</string>
+    <string name="show_notification_action">Show notification action</string>
+    <string name="show_reply_button">Show Reply button</string>
+    <string name="reply">Responder</string>
+</resources>
