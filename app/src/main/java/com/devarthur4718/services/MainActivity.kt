@@ -61,10 +61,14 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-
+        btnNotificationProgress.setOnClickListener {
+            it.context.showNotificationProgress(
+                R.drawable.ic_file_download_black_24dp,
+                "Picture Download",
+                "Download in Progress",
+                "14",
+                3
+            )
+        }
     }
-
-
-
-
 }

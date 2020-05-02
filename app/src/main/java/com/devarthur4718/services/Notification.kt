@@ -21,7 +21,7 @@ fun Context.showNotification(
 ) {
 
     var builder = createNoficationBuilder(title, comment, CHANNEL_ID, iconDrawable, this)
-    createNotificationChannel(this)
+    createNotificationChannel(this,this.getString(R.string.app_name),CHANNEL_ID)
     with(NotificationManagerCompat.from(this)) {
         notify(1, builder.build())
     }
@@ -45,7 +45,7 @@ fun Context.showNotificationActionButton(
         .setContentIntent(pendingIntent)
         .addAction(R.drawable.ic_android_black_24dp, action, pendingIntent)
 
-    createNotificationChannel(this)
+    createNotificationChannel(this,this.getString(R.string.app_name),CHANNEL_ID)
 
     with(NotificationManagerCompat.from(this)) {
         notify(1, builder.build())
@@ -70,7 +70,7 @@ fun Context.showNotificationTap(
     val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
     var builder = createNoficationBuilder(title, comment, CHANNEL_ID, iconDrawable, this)
-    createNotificationChannel(this)
+    createNotificationChannel(this,this.getString(R.string.app_name),CHANNEL_ID)
 
     builder
         .setContentIntent(pendingIntent)
@@ -136,6 +136,38 @@ fun Context.showNotificationReply(
 
 }
 
+//Download notification sample
+fun Context.showNotificationProgress(
+    @IdRes iconDrawable: Int,
+    title: String,
+    comment: String,
+    CHANNEL_ID: String = "11",
+    notification_id : Int
+
+) {
+
+
+    createNotificationChannel(this,this.getString(R.string.app_name),CHANNEL_ID)
+    var builder = createNoficationBuilder(title, comment, CHANNEL_ID, iconDrawable, this)
+
+    val PROGRESS_MAX = 100
+    val PROGRESS_CURRENT = 0
+
+    //Use a background service/coroutine to update progress
+    NotificationManagerCompat.from(this).apply {
+        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false)
+        notify(notification_id, builder.build())
+
+        builder
+            .setContentText("Download Complete")
+            .setProgress(0,0,false)
+
+        notify(notification_id, builder.build())
+
+    }
+
+}
+
 fun createNoficationBuilder(
     title: String,
     comment: String,
@@ -155,7 +187,7 @@ fun createNoficationBuilder(
 fun createNotificationChannel(
     context: Context,
     channel_name: String = "app_channel",
-    CHANNEL_ID: String = "11"
+    CHANNEL_ID: String
 ) {
 
     // Create the NotificationChannel, but only on API 26+ because

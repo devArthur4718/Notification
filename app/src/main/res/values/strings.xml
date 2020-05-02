@@ -17,4 +17,5 @@
     <string name="show_notification_action">Show notification action</string>
     <string name="show_reply_button">Show Reply button</string>
     <string name="reply">Responder</string>
+    <string name="show_notification_progress">Show notification progress</string>
 </resources>
